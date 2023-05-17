@@ -5,13 +5,23 @@ let remember = [];
  * 
  */
 async function init_login() {
-    await downloadFromServer();
-    users = JSON.parse(backend.getItem('users')) || [];
+    // await downloadFromServer();
+    // users = JSON.parse(backend.getItem('users')) || [];
+    // users = JSON.parse(await getItem('users')) || [];
+    loadUsers();
     load();
     rememberload();
     render();
 }
 
+
+async function loadUsers() {
+    try {
+        users = JSON.parse(await getItem('users'));
+    } catch(e){
+        console.error('Loading error:', e);
+    }
+}
 /**
  * This function is used to initializing / loading the reset_password.html and load the users JSON from the Backend.
  * 
@@ -127,7 +137,8 @@ async function registNewAccount() {
             animationCounter: 0
         };
         users.push(account);
-        await backend.setItem('users', JSON.stringify(users));
+        // await backend.setItem('users', JSON.stringify(users));
+        await setItem('users', JSON.stringify(users));
         setTimeout(() => popup.classList.add("d-none"), 3000);
         clearInput();
     }

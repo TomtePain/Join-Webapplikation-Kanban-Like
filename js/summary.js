@@ -6,6 +6,7 @@ let todoTasks = [];
 let feedback = [];
 let InProgress = [];
 let dones = [];
+let prios = [];
 
 /**
  * It's a function that waits for the init() function to finish, then it gets the prios and tasks from
@@ -13,9 +14,17 @@ let dones = [];
  */
 async function init_summary() {
     await init();
-    prios = JSON.parse(backend.getItem('prios')) || [];
-    tasks = JSON.parse(backend.getItem('tasks')) || [];
+    await loadTasks();
     render();
+}
+
+async function loadTasks() {
+    try {
+        prios = JSON.parse(await getItem('prios'));
+        tasks = JSON.parse(await getItem('tasks'));
+    }catch(e){
+        console.error('Loading error:', e);
+    }
 }
 
 /**
@@ -140,8 +149,8 @@ function sortDates() {
         const num2 = Number(b.split("-").map((num) => (`000${num}`).slice(-2)).join(""));
         return num1 - num2;
     });
-    if(dates == '') {
-        currentDateFormatted();        
+    if (dates == '') {
+        currentDateFormatted();
         return false
     } else {
         newDateFormat();
@@ -191,16 +200,16 @@ function getNewOverviewForSummary() {
     let todo = document.getElementById('summary-todo-counter');
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i].status;
-        if(element == 0) {
+        if (element == 0) {
             todoTasks.push(tasks[i]);
             todo.innerHTML = todoTasks.length;
-        } else if(element == 1) {
+        } else if (element == 1) {
             InProgress.push(tasks[i]);
             ip.innerHTML = InProgress.length;
-        } else if(element == 2) {
+        } else if (element == 2) {
             feedback.push(tasks[i]);
             af.innerHTML = feedback.length;
-        } else if (element == 3){
+        } else if (element == 3) {
             dones.push(tasks[i]);
             doned.innerHTML = dones.length;
         }

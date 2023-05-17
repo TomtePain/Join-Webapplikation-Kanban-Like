@@ -7,8 +7,7 @@ let activeUser = [];
  * includes the HTML.
  */
 async function init() {
-    await downloadFromServer();
-    users = JSON.parse(backend.getItem('users')) || [];
+    users = JSON.parse(await getItem('users')) || [];
     load();
     includeHTML();
 }

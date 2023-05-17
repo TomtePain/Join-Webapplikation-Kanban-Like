@@ -23,13 +23,12 @@ function compareStrings(a, b) {
  * @returns the result of the function compareStrings.
  */
 async function renderContacts() {
-    await downloadFromServer();
-    contacts = JSON.parse(backend.getItem('contacts')) || [];
-    categories = JSON.parse(backend.getItem('categories')) || [];
-    prios = JSON.parse(backend.getItem('prios')) || [];
-    tasks = JSON.parse(backend.getItem('tasks')) || [];
     load();
     includeHTML();
+    categories = JSON.parse(await getItem("categories")) || [];
+    prios = JSON.parse(await getItem("prios")) || [];
+    tasks = JSON.parse(await getItem("tasks")) || [];
+    contacts = JSON.parse(await getItem("contacts")) || [];
     contacts.sort(function (a, b) {
         return compareStrings(a.contactName, b.contactName);
     })
@@ -116,7 +115,7 @@ async function newContactRender(singleContact) {
     closeModal();
     renderContacts();
     showSuccess();
-} 
+}
 
 
 

@@ -12,15 +12,13 @@ let categoryCreationValidation = false;
  * It downloads data from the server, parses it, initializes the form, loads the data, includes the HTML, and displays the create button in the header.
  */
 async function initAddTask() {
-  await downloadFromServer();
-  users = JSON.parse(backend.getItem("users")) || [];
-  categories = JSON.parse(backend.getItem("categories")) || [];
-  prios = JSON.parse(backend.getItem("prios")) || [];
-  tasks = JSON.parse(backend.getItem("tasks")) || [];
-  contacts = JSON.parse(backend.getItem("contacts")) || [];
+  init();
+  users = JSON.parse(await getItem("users")) || [];
+  categories = JSON.parse(await getItem("categories")) || [];
+  prios = JSON.parse(await getItem("prios")) || [];
+  tasks = JSON.parse(await getItem("tasks")) || [];
+  contacts = JSON.parse(await getItem("contacts")) || [];
   initForm();
-  load();
-  await includeHTML();
   displayCreateBtnHeader();
 }
 
@@ -39,8 +37,8 @@ async function createTask() {
   task.subtasks = currentSubTasks;
   task.status = currentStatus;
   tasks.push(task);
-  await backend.setItem("tasks", JSON.stringify(tasks));
-  await backend.setItem("users", JSON.stringify(users));
+  await setItem("tasks", JSON.stringify(tasks));
+  await setItem("users", JSON.stringify(users));
 }
 
 

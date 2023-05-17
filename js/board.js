@@ -2,15 +2,14 @@
  * It downloads data from the server, then loads it into the local storage, then includes the HTML templates, then renders the tasks to the board.
  */
 async function initBoard() {
-  await downloadFromServer();
-  users = JSON.parse(backend.getItem("users")) || [];
-  categories = JSON.parse(backend.getItem("categories")) || [];
-  prios = JSON.parse(backend.getItem("prios")) || [];
-  tasks = JSON.parse(backend.getItem("tasks")) || [];
-  contacts = JSON.parse(backend.getItem("contacts")) || [];
   load();
   includeHTML();
   renderTasksToBoard();
+  users = JSON.parse(await getItem("users")) || [];
+  categories = JSON.parse(await getItem("categories")) || [];
+  prios = JSON.parse(await getItem("prios")) || [];
+  tasks = JSON.parse(await getItem("tasks")) || [];
+  contacts = JSON.parse(await getItem("contacts")) || [];
 }
 
 

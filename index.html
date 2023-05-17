@@ -10,11 +10,9 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/fonts.css">
     <script src="./js/script.js"></script>
-    <script src="./mini_backend.js"></script>
+    <script src="./js/storage.js"></script>
     <script src="./js/login.js"></script>
-    <script>setURL('https://gruppenarbeit-join-465.developerakademie.net/smallest_backend_ever-master')</script>
-
-
+   
 </head>
 
 <body onload="init_login()">
@@ -65,7 +63,8 @@
             <label for="check-for-sign-up"><img id="back-arrow" src="assets/img/Vectorarrow-left.svg"></label>
             <h1 class="headline">Sign up</h1>
             <div class="underline"></div>
-            <form id="form-signup" action="https://gruppenarbeit-join-465.developerakademie.net/signup-send_mail.php" onsubmit="return registNewAccount(); return false"  method="post">
+            <form id="form-signup" onsubmit="return registNewAccount(); return false"  method="post">
+                <!-- action="https://gruppenarbeit-join-465.developerakademie.net/signup-send_mail.php" -->
                 <div class="login-input"><input type="text" id="name" placeholder="Name" required><img
                         src="assets/img/VectornameIcon.svg"></div>
                 <div class="login-input"><input type="email" name="email" id="email" placeholder="Email" required><img
