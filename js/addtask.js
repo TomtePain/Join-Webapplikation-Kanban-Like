@@ -286,7 +286,7 @@ async function addCategory() {
     newCategory.categoryName = newCategoryName;
     newCategory.categoryColor = newCategoryColor;
     categories.push(newCategory);
-    await backend.setItem("categories", JSON.stringify(categories));
+    await setItem("categories", JSON.stringify(categories));
     closeNewCategoryInput();
     renderCategoriesToForm();
   }

@@ -1,5 +1,7 @@
 let users = [];
 let activeUser = [];
+let prios;
+let tasks;
 
 
 /**

@@ -6,7 +6,7 @@ let todoTasks = [];
 let feedback = [];
 let InProgress = [];
 let dones = [];
-let prios = [];
+
 
 /**
  * It's a function that waits for the init() function to finish, then it gets the prios and tasks from

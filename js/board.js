@@ -72,7 +72,7 @@ function renderMoveMenu(taskid) {
  */
 async function changeTaskStatus(taskid, status) {
     tasks[taskid].status = status;
-    await backend.setItem("tasks", JSON.stringify(tasks));
+    await setItem("tasks", JSON.stringify(tasks));
     renderMoveMenu(taskid);
   }
 
@@ -125,7 +125,7 @@ function cancelTaskDeletion() {
  */
 async function deleteTask(i) {
     tasks[i].status = 4;
-    await backend.setItem("tasks", JSON.stringify(tasks));
+    await setItem("tasks", JSON.stringify(tasks));
     displayPopupMsg("taskdeleted");
     setTimeout(closeTaskview, 2000);
     renderTasksToBoard();
@@ -138,7 +138,7 @@ async function deleteTask(i) {
  */
 async function toggleSubtaskCheckboxEdit(i) {
     toggleSubtaskCheckbox(i);
-    await backend.setItem("tasks", JSON.stringify(tasks));
+    await setItem("tasks", JSON.stringify(tasks));
     nonCheckSubsNew();
   }
 
@@ -150,7 +150,7 @@ async function toggleSubtaskCheckboxEdit(i) {
  */
 async function deleteSubTaskEdit(i, selectedTask) {
     deleteSubTask(i);
-    await backend.setItem("tasks", JSON.stringify(tasks));
+    await setItem("tasks", JSON.stringify(tasks));
     displayPopupMsg("subtaskdeleted");
     renderSubTasksTaskview(selectedTask);
     setTimeout(hidePopupMsg, 2000);

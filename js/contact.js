@@ -25,10 +25,10 @@ function compareStrings(a, b) {
 async function renderContacts() {
     load();
     includeHTML();
+    contacts = JSON.parse(await getItem("contacts")) || [];
     categories = JSON.parse(await getItem("categories")) || [];
     prios = JSON.parse(await getItem("prios")) || [];
     tasks = JSON.parse(await getItem("tasks")) || [];
-    contacts = JSON.parse(await getItem("contacts")) || [];
     contacts.sort(function (a, b) {
         return compareStrings(a.contactName, b.contactName);
     })
@@ -111,7 +111,7 @@ function renderContactDetails(i) {
  */
 async function newContactRender(singleContact) {
     contacts.push(singleContact);
-    await backend.setItem('contacts', JSON.stringify(contacts));
+    await setItem('contacts', JSON.stringify(contacts));
     closeModal();
     renderContacts();
     showSuccess();
@@ -156,7 +156,7 @@ async function editContact(i) {
     singleContact['email'] = mail.value;
     singleContact['phone'] = mobile.value;
 
-    await backend.setItem('contacts', JSON.stringify(contacts));
+    await setItem('contacts', JSON.stringify(contacts));
     closeModal();
     renderContacts();
     renderContactDetails(i);
@@ -179,7 +179,7 @@ async function deleteContact(i) {
  * It saves the contacts array to the browser's local storage
  */
 async function saveContactData() {
-    await backend.setItem('contacts', JSON.stringify(contacts));
+    await setItem('contacts', JSON.stringify(contacts));
 }
 
 
@@ -250,7 +250,6 @@ function openNewContact() { // TODO: Animation hinzufügen
     document.getElementById('dialog').classList.remove('d-none');
     document.getElementById('dialog').innerHTML = '';
     document.getElementById('dialog').innerHTML += modalNewContact();
-    /*  document.getElementById('newContactName').focus(); */
     focusInput();
 }
 

@@ -293,8 +293,8 @@ async function editTask(i) {
   task.status = currentStatus;
   tasks[i] = task;
 
-  await backend.setItem("tasks", JSON.stringify(tasks));
-  await backend.setItem("users", JSON.stringify(users));
+  await setItem("tasks", JSON.stringify(tasks));
+  await setItem("users", JSON.stringify(users));
   displayPopupMsg("taskupdated");
   setTimeout(closeTaskview, 2000);
   renderTasksToBoard();
