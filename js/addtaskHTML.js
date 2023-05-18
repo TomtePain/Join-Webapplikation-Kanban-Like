@@ -230,6 +230,7 @@ function renderTaskToBoardHTML(task, i) {
 }
 
 
+
 /**
  * It renders an error message to the taskview page if the task could not be found.
  */

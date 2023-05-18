@@ -2,14 +2,12 @@
  * It downloads data from the server, then loads it into the local storage, then includes the HTML templates, then renders the tasks to the board.
  */
 async function initBoard() {
-  load();
-  includeHTML();
-  renderTasksToBoard();
-  users = JSON.parse(await getItem("users")) || [];
+  init();
+  tasks = JSON.parse(await getItem("tasks")) || [];
   categories = JSON.parse(await getItem("categories")) || [];
   prios = JSON.parse(await getItem("prios")) || [];
-  tasks = JSON.parse(await getItem("tasks")) || [];
   contacts = JSON.parse(await getItem("contacts")) || [];
+  renderTasksToBoard();
 }
 
 
@@ -17,20 +15,20 @@ async function initBoard() {
  * When the user clicks on the edit button, the task sub menu will appear and the edit button will disappear.
  */
 function openTaskSubMenu() {
-    document.getElementById("taskmenu").classList.remove("d-none");
-    document.getElementById("edit-btn").classList.add("d-none");
-  }
-  
-  
-  /**
-   * It displays the task sub menu and hides the task move menu.
-   * @param i - the index of the task in the array
-   */
-  function openMoveMenu(i) {
-    document.getElementById("taskmenu").classList.add("d-none");
-    renderMoveMenu(i);
-    document.getElementById("movemenu").classList.remove("d-none");
-  }
+  document.getElementById("taskmenu").classList.remove("d-none");
+  document.getElementById("edit-btn").classList.add("d-none");
+}
+
+
+/**
+ * It displays the task sub menu and hides the task move menu.
+ * @param i - the index of the task in the array
+ */
+function openMoveMenu(i) {
+  document.getElementById("taskmenu").classList.add("d-none");
+  renderMoveMenu(i);
+  document.getElementById("movemenu").classList.remove("d-none");
+}
 
 
 /**
@@ -38,9 +36,9 @@ function openTaskSubMenu() {
  * the element with the id "movemenu".
  */
 function closeMoveMenu() {
-    document.getElementById("taskmenu").classList.remove("d-none");
-    document.getElementById("movemenu").classList.add("d-none");
-  }
+  document.getElementById("taskmenu").classList.remove("d-none");
+  document.getElementById("movemenu").classList.add("d-none");
+}
 
 
 /**
@@ -48,21 +46,21 @@ function closeMoveMenu() {
  * @param taskid - the id of the task
  */
 function renderMoveMenu(taskid) {
-    let movemenu = document.getElementById("movemenu");
-    let status = tasks[taskid].status;
-    const statusName = ["To do", "In progress", "Awaiting feedback", "Done"];
-    movemenu.innerHTML = "";
-    for (let i = 0; i < 4; i++) {
-      const moveId = "move" + [i];
-      if (status == i) {
-        className = "buttonblue";
-      } else {
-        className = "buttonwhite";
-      }
-      movemenu.innerHTML += moveMenuHTML(taskid, moveId, className, statusName[i], i);
+  let movemenu = document.getElementById("movemenu");
+  let status = tasks[taskid].status;
+  const statusName = ["To do", "In progress", "Awaiting feedback", "Done"];
+  movemenu.innerHTML = "";
+  for (let i = 0; i < 4; i++) {
+    const moveId = "move" + [i];
+    if (status == i) {
+      className = "buttonblue";
+    } else {
+      className = "buttonwhite";
     }
-    movemenu.innerHTML += `<div class="buttonwhite" onclick="closeMoveMenu()">Back</div>`;
+    movemenu.innerHTML += moveMenuHTML(taskid, moveId, className, statusName[i], i);
   }
+  movemenu.innerHTML += `<div class="buttonwhite" onclick="closeMoveMenu()">Back</div>`;
+}
 
 
 /**
@@ -71,32 +69,33 @@ function renderMoveMenu(taskid) {
  * @param status - the status of the task (e.g. "todo", "doing", "done")
  */
 async function changeTaskStatus(taskid, status) {
-    tasks[taskid].status = status;
-    await setItem("tasks", JSON.stringify(tasks));
-    renderMoveMenu(taskid);
-  }
+  tasks[taskid].status = status;
+  await setItem("tasks", JSON.stringify(tasks));
+  renderMoveMenu(taskid);
+}
 
 
 /**
  * It renders the tasks to the board into the relevant columns based on the tasks' status.
  */
 function renderTasksToBoard() {
-    clearBoardColumns();
-    for (let i = 0; i < tasks.length; i++) {
-      const task = tasks[i];
-      if (task.status === 0) {
-        document.getElementById("todo").innerHTML += renderTaskToBoardHTML(task, i);
-      } else if (task.status === 1) {
-        document.getElementById("inprogress").innerHTML += renderTaskToBoardHTML(task, i);
-      } else if (task.status === 2) {
-        document.getElementById("awaitingfeedback").innerHTML += renderTaskToBoardHTML(task, i);
-      } else if (task.status === 3) {
-          document.getElementById("done").innerHTML += renderTaskToBoardHTML(task, i);
-      }
-      nonCheckSubsNew();
-      assignViewIcons();
-      showPrioToTaskViewBoard();}
+  clearBoardColumns();
+  for (let i = 0; i < tasks.length; i++) {
+    const task = tasks[i];
+    if (task.status === 0) {
+      document.getElementById("todo").innerHTML += renderTaskToBoardHTML(task, i);
+    } else if (task.status === 1) {
+      document.getElementById("inprogress").innerHTML += renderTaskToBoardHTML(task, i);
+    } else if (task.status === 2) {
+      document.getElementById("awaitingfeedback").innerHTML += renderTaskToBoardHTML(task, i);
+    } else if (task.status === 3) {
+      document.getElementById("done").innerHTML += renderTaskToBoardHTML(task, i);
+    }
+    nonCheckSubsNew();
+    assignViewIcons();
+    showPrioToTaskViewBoard();
   }
+}
 
 
 /**
@@ -104,19 +103,19 @@ function renderTasksToBoard() {
  * @param i - the index of the task in the array
  */
 function openDeleteForm(i) {
-    document.getElementById("taskmenu").classList.add("d-none");
-    document.getElementById("deletemsgcontainer").classList.remove("d-none");
-    document.getElementById("deletemsg").innerHTML = renderDeleteBtns(i);
-  }
+  document.getElementById("taskmenu").classList.add("d-none");
+  document.getElementById("deletemsgcontainer").classList.remove("d-none");
+  document.getElementById("deletemsg").innerHTML = renderDeleteBtns(i);
+}
 
 
 /**
  * It hides the delete message and unhides the task sub menu.
  */
 function cancelTaskDeletion() {
-    document.getElementById("deletemsgcontainer").classList.add("d-none");
-    document.getElementById("taskmenu").classList.remove("d-none");
-  }
+  document.getElementById("deletemsgcontainer").classList.add("d-none");
+  document.getElementById("taskmenu").classList.remove("d-none");
+}
 
 
 /**
@@ -124,12 +123,12 @@ function cancelTaskDeletion() {
  * @param i - the index of the task in the array
  */
 async function deleteTask(i) {
-    tasks[i].status = 4;
-    await setItem("tasks", JSON.stringify(tasks));
-    displayPopupMsg("taskdeleted");
-    setTimeout(closeTaskview, 2000);
-    renderTasksToBoard();
-  }
+  tasks[i].status = 4;
+  await setItem("tasks", JSON.stringify(tasks));
+  displayPopupMsg("taskdeleted");
+  setTimeout(closeTaskview, 2000);
+  renderTasksToBoard();
+}
 
 
 /**
@@ -137,10 +136,10 @@ async function deleteTask(i) {
  * @param i - The index of the subtask
  */
 async function toggleSubtaskCheckboxEdit(i) {
-    toggleSubtaskCheckbox(i);
-    await setItem("tasks", JSON.stringify(tasks));
-    nonCheckSubsNew();
-  }
+  toggleSubtaskCheckbox(i);
+  await setItem("tasks", JSON.stringify(tasks));
+  nonCheckSubsNew();
+}
 
 
 /**
@@ -149,12 +148,12 @@ async function toggleSubtaskCheckboxEdit(i) {
  * @param selectedTask - the task that is currently selected
  */
 async function deleteSubTaskEdit(i, selectedTask) {
-    deleteSubTask(i);
-    await setItem("tasks", JSON.stringify(tasks));
-    displayPopupMsg("subtaskdeleted");
-    renderSubTasksTaskview(selectedTask);
-    setTimeout(hidePopupMsg, 2000);
-  }
+  deleteSubTask(i);
+  await setItem("tasks", JSON.stringify(tasks));
+  displayPopupMsg("subtaskdeleted");
+  renderSubTasksTaskview(selectedTask);
+  setTimeout(hidePopupMsg, 2000);
+}
 
 
 /**
@@ -162,20 +161,20 @@ async function deleteSubTaskEdit(i, selectedTask) {
  * @param column - status of the column that the task is being added to
  */
 function addTaskOnBoard(column) {
-    openAddTaskForm();
-    currentStatus = column;
-  } 
+  openAddTaskForm();
+  currentStatus = column;
+}
 
 
 /**
  * If the user is on the board page, hide the delete message container
  */
 function hideDeleteMsgContainer() {
-    if (window.location.pathname == "/html/board.html") {
-      document.getElementById("deletemsgcontainer").classList.add("d-none");
-    }
+  if (window.location.pathname == "/html/board.html") {
+    document.getElementById("deletemsgcontainer").classList.add("d-none");
   }
+}
 
-  function doNotClose(event) {
-    event.stopPropagation();
+function doNotClose(event) {
+  event.stopPropagation();
 }

@@ -1,7 +1,11 @@
 let users = [];
 let activeUser = [];
-let prios;
-let tasks;
+// 
+// 
+let prios = []; 
+let tasks = []; 
+let categories = [];
+
 
 
 /**

@@ -23,8 +23,7 @@ function compareStrings(a, b) {
  * @returns the result of the function compareStrings.
  */
 async function renderContacts() {
-    load();
-    includeHTML();
+    init();
     contacts = JSON.parse(await getItem("contacts")) || [];
     categories = JSON.parse(await getItem("categories")) || [];
     prios = JSON.parse(await getItem("prios")) || [];

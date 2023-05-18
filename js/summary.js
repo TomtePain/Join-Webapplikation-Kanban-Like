@@ -20,8 +20,8 @@ async function init_summary() {
 
 async function loadTasks() {
     try {
-        prios = JSON.parse(await getItem('prios'));
         tasks = JSON.parse(await getItem('tasks'));
+        prios = JSON.parse(await getItem('prios'));
     }catch(e){
         console.error('Loading error:', e);
     }

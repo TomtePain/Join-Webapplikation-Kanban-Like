@@ -13,13 +13,20 @@ let categoryCreationValidation = false;
  */
 async function initAddTask() {
   init();
-  users = JSON.parse(await getItem("users")) || [];
-  categories = JSON.parse(await getItem("categories")) || [];
-  prios = JSON.parse(await getItem("prios")) || [];
-  tasks = JSON.parse(await getItem("tasks")) || [];
-  contacts = JSON.parse(await getItem("contacts")) || [];
+  await loadBackendData();
   initForm();
   displayCreateBtnHeader();
+}
+
+async function loadBackendData() {
+  try {
+    categories = JSON.parse(await getItem("categories"));
+    tasks = JSON.parse(await getItem('tasks'));
+    contacts = JSON.parse(await getItem("contacts"));
+    prios = JSON.parse(await getItem('prios'));
+  } catch (e) {
+    console.error('Loading error:', e);
+  }
 }
 
 /**
@@ -204,7 +211,7 @@ function setCategory(str, color) {
   currentCategory.categoryName = str;
   currentCategory.categoryColor = color;
   document.getElementById("categoryselection").innerHTML =
-    categorySelectionHTML(currentCategory.categoryName,currentCategory.categoryColor);
+    categorySelectionHTML(currentCategory.categoryName, currentCategory.categoryColor);
   document.getElementById("categoryselection").innerHTML += `<img class="arrow" src="../assets/img/dropdown.png">`;
 }
 
@@ -272,7 +279,7 @@ function renderCurrentAssigneesList() {
     }
   } else {
     assigneesList.classList.add("d-none");
-    
+
   }
 }
 
