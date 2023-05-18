@@ -24,10 +24,7 @@ function compareStrings(a, b) {
  */
 async function renderContacts() {
     init();
-    contacts = JSON.parse(await getItem("contacts")) || [];
-    categories = JSON.parse(await getItem("categories")) || [];
-    prios = JSON.parse(await getItem("prios")) || [];
-    tasks = JSON.parse(await getItem("tasks")) || [];
+    await loadBackendData();
     contacts.sort(function (a, b) {
         return compareStrings(a.contactName, b.contactName);
     })

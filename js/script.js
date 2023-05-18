@@ -2,9 +2,9 @@ let users = [];
 let activeUser = [];
 // 
 // 
-let prios = []; 
-let tasks = []; 
-let categories = [];
+// let prios = []; 
+// let tasks = []; 
+// let categories = [];
 
 
 
