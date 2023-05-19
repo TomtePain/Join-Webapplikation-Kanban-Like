@@ -139,12 +139,17 @@ div.logMenue ul li.d-none {
     color: #CDCDCD;
 }
 
+.footerNav a {
+    color: white;
+    text-decoration: none;
+}
+
 .navItem {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
+    height: -webkit-fill-available;
     padding: 10px;
 }
 
@@ -218,6 +223,11 @@ div.logMenue ul a {
         color: #fff;
     }
 
+    #linkTasks:hover {
+        background: #091931;
+        color: #fff;
+    }
+
     .iconWidth {
         max-width: 28px;
     }
@@ -249,7 +259,6 @@ div.logMenue ul a {
     }
 
     .headerSections {
-
         padding-left: 110px;
     }
 

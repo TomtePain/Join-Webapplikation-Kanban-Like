@@ -21,9 +21,8 @@
 
 .navSelectedSidebarTask {
     color: #fff;
-    padding: 8px 0 8px 40px;
     margin-bottom: 10px;
-    background: unset !important;
+    background: unset;
 }
 
 .navSelectedFooterBoard {
@@ -541,7 +540,6 @@ progress::-webkit-progress-value {
 
     .contentContainer {
         padding-bottom: 30px;
-        /* margin-bottom: 10px; */
     }
 
     .boardsection {
@@ -563,10 +561,6 @@ progress::-webkit-progress-value {
         min-height: 235px;
         min-width: 0px;
     }
-
-    /* .boardsection  {
-        width: calc(50% - 20px)
-    } */
 
     .notasks {
         min-width: 0px;

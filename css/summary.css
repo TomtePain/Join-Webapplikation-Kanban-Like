@@ -25,6 +25,7 @@ body {
     background: #091931;
     color: #fff;
     padding: 10px;
+    height: -webkit-fill-available;
 }
 
 .navSelected {
