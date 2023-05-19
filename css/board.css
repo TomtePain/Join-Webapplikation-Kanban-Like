@@ -10,6 +10,8 @@
     margin-bottom: 30px;
 }
 
+
+
 .navSelectedSidebarBoard,
 .navSelectedSidebarBoard:active,
 .navSelectedSidebarBoard:focus,
@@ -499,6 +501,10 @@ progress::-webkit-progress-value {
 
 @media (min-width: 768px) {
 
+    html {
+        overflow: unset !important;
+    }
+
     #taskmenu,
     #movemenu {
         bottom: 70px;
@@ -594,6 +600,8 @@ progress::-webkit-progress-value {
 }
 
 @media (min-width: 1000px) {
+
+    
 
     .hide {
         display: none
