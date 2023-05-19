@@ -10,7 +10,9 @@
     margin-bottom: 30px;
 }
 
-
+html {
+    overflow: unset !important;
+}
 
 .navSelectedSidebarBoard,
 .navSelectedSidebarBoard:active,
