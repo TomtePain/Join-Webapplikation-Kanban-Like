@@ -13,6 +13,9 @@ function findTask() {
     let search = document.getElementById('findTask').value;
     search = search.toLowerCase();
     findTaskForLoop(search);
+    nonCheckSubsNew();
+    assignViewIcons();
+    showPrioToTaskViewBoard();
 }
 
 
