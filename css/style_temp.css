@@ -157,6 +157,7 @@ div.logMenue ul li.d-none {
     align-items: center;
     height: -webkit-fill-available;
     padding: 10px;
+    text-align: center;
 }
 
 .navItem img {

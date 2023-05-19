@@ -8,7 +8,7 @@ function openTaskview(i) {
   selectedTask = i;
   deactivateScrolling();
   document.getElementById("modal").classList.remove("d-none");
-  document.getElementById("taskview-window").className = "scroll modalview";
+  document.getElementById("taskview-window").className = "scroll modalview"; 
   if (i < tasks.length) {
     document.getElementById("taskview").classList.remove("d-none");
     renderTaskview(i);
@@ -22,10 +22,10 @@ function openTaskview(i) {
  * It closes the taskview window and resets the form.
  */
 function closeTaskview() {
-  if (window.location.pathname != "/html/contacts.html" ) {
+  if (window.location.pathname != "/JOIN/html/contacts.html" ) {
     activateScrolling();
   }
-  else if (window.innerWidth < 767 && window.location.pathname == "/html/contacts.html") {
+  else if (window.innerWidth < 767 && window.location.pathname == "/JOIN/html/contacts.html") {
     document.documentElement.style.overflow = 'hidden';
     document.body.scroll = "no";
   }
@@ -36,14 +36,15 @@ function closeTaskview() {
   document.getElementById("editTaskForm").classList.add("d-none");
   document.getElementById("okbtncontainer").classList.add("d-none");
   document.getElementById("formbuttons").classList.add("d-none");
-  if (window.location.pathname == "/html/board.html") {
+  if (window.location.pathname == "/JOIN/html/board.html") {
     hideDeleteMsgContainer();
   }
   document.getElementById("taskview-window").className = "scroll";
   hidePopupMsg();
   resetForm();
-  if (window.location.pathname == "/html/board.html") {
+  if (window.location.pathname == "/JOIN/html/board.html") {
     renderTasksToBoard();
+     
   }
 }
 
@@ -200,10 +201,10 @@ function openEditForm() {
  * It opens a modal form that includes the AddTask form..
  */
 function openAddTaskForm() {
-  if (window.location.pathname != "/html/contacts.html") {
+  if (window.location.pathname != "/JOIN/html/contacts.html") {
     deactivateScrolling();
   }
-  else if (window.location.pathname == "/html/contacts.html" && window.innerHeight > 750 && window.innerWidth < 767) {
+  else if (window.location.pathname == "/JOIN/html/contacts.html" && window.innerHeight > 750 && window.innerWidth < 767) {
     document.documentElement.style.overflow = 'scroll';
     document.body.scroll = "yes";
   }
@@ -355,8 +356,8 @@ function deactivateScrolling() {
     document.documentElement.style.overflow = "hidden";
     document.body.scroll = "no";
   }
-  if (window.innerWidth < 767 && window.location.pathname == "/html/board.html") { document.getElementById("board").classList.add("d-none"); }
-  if (window.innerWidth < 767 && window.location.pathname == "/html/contacts.html") {
+  if (window.innerWidth < 767 && window.location.pathname == "/JOIN/html/board.html") { document.getElementById("board").classList.add("d-none"); }
+  if (window.innerWidth < 767 && window.location.pathname == "/JOIN/html/contacts.html") {
     document.documentElement.style.overflow = "scroll";
     document.body.scroll = "yes";
   }
@@ -369,12 +370,12 @@ function deactivateScrolling() {
 function activateScrolling() {
   document.documentElement.style.overflow = "scroll";
   document.body.scroll = "yes";
-  if (window.location.pathname == "/html/board.html") {
+  if (window.location.pathname == "/JOIN/html/board.html") {
     document.getElementById("board").classList.remove("d-none");
     document.documentElement.style.overflow = "scroll";
     document.body.scroll = "yes";
   }
-  if (window.location.pathname == "/html/contacts.html") {
+  if (window.location.pathname == "/JOIN/html/contacts.html") {
     document.documentElement.style.overflow = "scroll";
     document.body.scroll = "yes";
   }
