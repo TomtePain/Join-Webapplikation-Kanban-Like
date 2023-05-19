@@ -5,9 +5,6 @@ let remember = [];
  * 
  */
 async function init_login() {
-    // await downloadFromServer();
-    // users = JSON.parse(backend.getItem('users')) || [];
-    // users = JSON.parse(await getItem('users')) || [];
     loadUsers();
     load();
     rememberload();

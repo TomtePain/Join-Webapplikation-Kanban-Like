@@ -3,10 +3,7 @@
  */
 async function initBoard() {
   init();
-  tasks = JSON.parse(await getItem("tasks")) || [];
-  categories = JSON.parse(await getItem("categories")) || [];
-  prios = JSON.parse(await getItem("prios")) || [];
-  contacts = JSON.parse(await getItem("contacts")) || [];
+  await loadBackendData();
   renderTasksToBoard();
 }
 
