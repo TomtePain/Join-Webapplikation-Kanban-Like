@@ -74,7 +74,6 @@ function showPopUpPw() {
             activeUser.push(user);
             save();
             setTimeout(() => popup.classList.add("d-none"), 3000);
-            form.action = action;
         }
     } else {showPopupNotFound();}
     inputmail.value = '';
@@ -134,7 +133,6 @@ async function registNewAccount() {
             animationCounter: 0
         };
         users.push(account);
-        // await backend.setItem('users', JSON.stringify(users));
         await setItem('users', JSON.stringify(users));
         setTimeout(() => popup.classList.add("d-none"), 3000);
         clearInput();
