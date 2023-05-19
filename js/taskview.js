@@ -22,10 +22,10 @@ function openTaskview(i) {
  * It closes the taskview window and resets the form.
  */
 function closeTaskview() {
-  if (window.location.pathname != "/html/contacts.html") {
+  if (window.location.pathname != "/html/contacts.html" ) {
     activateScrolling();
   }
-  else if (window.innerWidth < 767 && window.location.pathname == "/html/contacts.html" && window.innerHeight > 750) {
+  else if (window.innerWidth < 767 && window.location.pathname == "/html/contacts.html") {
     document.documentElement.style.overflow = 'hidden';
     document.body.scroll = "no";
   }
@@ -42,9 +42,9 @@ function closeTaskview() {
   document.getElementById("taskview-window").className = "scroll";
   hidePopupMsg();
   resetForm();
-  // if (window.location.pathname == "/html/board.html") {
-  //   renderTasksToBoard();
-  // }
+  if (window.location.pathname == "/html/board.html") {
+    renderTasksToBoard();
+  }
 }
 
 

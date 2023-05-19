@@ -61,14 +61,14 @@ function greetTime() {
     let date = new Date();
     let time = date.getHours();
     if (time < 11 && time > 0) {
-        greetTime.innerHTML = 'Good Morning,'
-        greetTimeMobile.innerHTML = 'Good Morning,'
+        greetTime.innerHTML = 'Good Morning'
+        greetTimeMobile.innerHTML = 'Good Morning'
     } else if (time >= 11 && time < 17) {
-        greetTime.innerHTML = 'Hello,'
-        greetTimeMobile.innerHTML = 'Hello,'
+        greetTime.innerHTML = 'Hello'
+        greetTimeMobile.innerHTML = 'Hello'
     } else {
-        greetTime.innerHTML = 'Good Evening,'
-        greetTimeMobile.innerHTML = 'Good Evening,'
+        greetTime.innerHTML = 'Good Evening'
+        greetTimeMobile.innerHTML = 'Good Evening'
     }
 }
 

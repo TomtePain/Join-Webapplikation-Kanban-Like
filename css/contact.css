@@ -331,6 +331,7 @@ body {
 .trashIcon {
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 
 #singleData {
@@ -375,8 +376,8 @@ body {
 
 @media only screen and (min-width: 768px) {
 
-    h1.contacts {
-        font-size: 47px;
+    #h1 {
+        font-size: 47px !important;
     }
 
     .contentContainer {
@@ -419,7 +420,8 @@ body {
         display: flex;
         flex-direction: column;
         flex: 3;
-        margin-left: 50px;
+        margin-left: 20px;
+        padding: 0;
     }
 
     .contactSingleData {
@@ -538,14 +540,14 @@ body {
 
     .subheadDescription {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 20px;
         margin-bottom: 30px;
     }
 
     .borderBlueDesktop {
-        display: flex;
+        display: none;
         width: 2px;
         height: 40px;
         background-color: #2BAAE2;
@@ -566,8 +568,11 @@ body {
 
     .contactInfo {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         font-size: 16px;
+        height: 100px;
+        align-items: flex-start;
+        justify-content: space-between;
     }
 
     .contactInfoHeader {
@@ -591,7 +596,6 @@ body {
     .trashIcon {
         width: 25px;
         height: 25px;
-        margin-left: 50px;
     }
 
     .editButtonSize {
@@ -623,10 +627,37 @@ body {
 }
 
 
-@media only screen and (min-width: 830px) {
+@media only screen and (min-width: 1000px) {
 
-    h1.contacts {
-        font-size: 67px;
+    #h1 {
+        font-size: 67px !important;
     }
 
+    .subheadDescription {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .borderBlueDesktop {
+        display: flex;
+        width: 2px;
+        height: 40px;
+        background-color: #2BAAE2;
+    }
+
+    .contactInfo {
+        display: flex;
+        flex-direction: row;
+        font-size: 16px;
+    }
+
+    .trashIcon {
+        width: 25px;
+        height: 25px;
+        margin-left: 50px;
+    }
 }
+
