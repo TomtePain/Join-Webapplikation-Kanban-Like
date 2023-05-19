@@ -598,9 +598,9 @@
 
   
   @media (max-width: 766px) {
-    .hidemobile {
+    /* .hidemobile {
       display: none !important;
-    }
+    } */
   }
 
   @media (min-width: 767px) {

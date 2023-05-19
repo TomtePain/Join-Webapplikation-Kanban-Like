@@ -202,6 +202,7 @@ button.editButtonCreate {
     background-image: url("../assets/img/contact-check.png");
     background-repeat: no-repeat;
     background-position: 146px 15px;
+    cursor: pointer;
 }
 
 .sucessInfoContainer {
