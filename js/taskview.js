@@ -22,11 +22,13 @@ function openTaskview(i) {
  * It closes the taskview window and resets the form.
  */
 function closeTaskview() {
-  if (window.location.pathname != "/html/contacts.html"){
-       activateScrolling();}
-      else if (window.innerWidth < 767 && window.location.pathname == "/html/contacts.html" && window.innerHeight > 750) {
-        document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "no";  }
+  if (window.location.pathname != "/html/contacts.html") {
+    activateScrolling();
+  }
+  else if (window.innerWidth < 767 && window.location.pathname == "/html/contacts.html" && window.innerHeight > 750) {
+    document.documentElement.style.overflow = 'hidden';
+    document.body.scroll = "no";
+  }
   document.getElementById("create-btn-top").classList.add("d-none");
   document.getElementById("modal").classList.add("d-none");
   document.getElementById("taskview").classList.add("d-none");
@@ -34,14 +36,15 @@ function closeTaskview() {
   document.getElementById("editTaskForm").classList.add("d-none");
   document.getElementById("okbtncontainer").classList.add("d-none");
   document.getElementById("formbuttons").classList.add("d-none");
-  if (window.location.pathname == "/html/board.html"){
-       hideDeleteMsgContainer();}
+  if (window.location.pathname == "/html/board.html") {
+    hideDeleteMsgContainer();
+  }
   document.getElementById("taskview-window").className = "scroll";
   hidePopupMsg();
   resetForm();
-  if (window.location.pathname == "/html/board.html") {
-    renderTasksToBoard();
-  }
+  // if (window.location.pathname == "/html/board.html") {
+  //   renderTasksToBoard();
+  // }
 }
 
 
@@ -170,9 +173,9 @@ function renderSubTasksTaskview(id) {
  * @returns the text of the priority.
  */
 function getPrioText(prio) {
-  if (prio == 1) {return "Urgent";}
-  if (prio == 2) {return "Medium";}
-  if (prio == 3) {return "Low";}
+  if (prio == 1) { return "Urgent"; }
+  if (prio == 2) { return "Medium"; }
+  if (prio == 3) { return "Low"; }
 }
 
 
@@ -198,11 +201,12 @@ function openEditForm() {
  */
 function openAddTaskForm() {
   if (window.location.pathname != "/html/contacts.html") {
-  deactivateScrolling();}
-    else if (window.location.pathname == "/html/contacts.html" && window.innerHeight > 750 && window.innerWidth < 767) {
-      document.documentElement.style.overflow = 'scroll';
-      document.body.scroll = "yes";
-    }
+    deactivateScrolling();
+  }
+  else if (window.location.pathname == "/html/contacts.html" && window.innerHeight > 750 && window.innerWidth < 767) {
+    document.documentElement.style.overflow = 'scroll';
+    document.body.scroll = "yes";
+  }
   document.getElementById("modal").classList.remove("d-none");
   document.getElementById("formbuttons").classList.remove("d-none");
   displayCreateBtnHeader();
@@ -351,14 +355,8 @@ function deactivateScrolling() {
     document.documentElement.style.overflow = "hidden";
     document.body.scroll = "no";
   }
-  if (
-    window.innerWidth < 767 && window.location.pathname == "/html/board.html"
-  ) {
-    document.getElementById("board").classList.add("d-none");
-  }
-  if (
-    window.innerWidth < 767 && window.location.pathname == "/html/contacts.html"
-  ) {
+  if (window.innerWidth < 767 && window.location.pathname == "/html/board.html") { document.getElementById("board").classList.add("d-none"); }
+  if (window.innerWidth < 767 && window.location.pathname == "/html/contacts.html") {
     document.documentElement.style.overflow = "scroll";
     document.body.scroll = "yes";
   }
