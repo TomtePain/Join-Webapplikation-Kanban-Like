@@ -7,7 +7,7 @@
 $recipient = $_POST['email'];
 $_POST['message'] = 'To reset your password, please click the link below and follow the constructions! 
                     Please note, that you use the same browser as the one you used to request.
-                    https://gruppenarbeit-join-465.developerakademie.net/html/reset_password.html';
+                    https://tom-pannier.de/project/JOIN/html/reset_password.html';
 $redirect = 'index.html';
 
 ########### CONFIG END ###########
